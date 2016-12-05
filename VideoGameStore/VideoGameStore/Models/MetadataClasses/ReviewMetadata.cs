@@ -26,6 +26,9 @@ namespace VideoGameStore.Models
         [Display(Name = "Game ID")]
         public int game_id { get; set; }
         [Required]
+        [Display(Name = "Review Content")]
+        public string review_content { get; set; }
+        [Required]
         [Display(Name = "Review Date")]
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
         [DateNotInFuture]

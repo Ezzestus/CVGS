@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace VideoGameStore.Controllers
 {
+    [Authorize(Roles = "Admin, Employee")]
     public class ReportsController : Controller
     {
         // GET: Reports

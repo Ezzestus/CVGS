@@ -14,13 +14,22 @@ namespace VideoGameStore.Controllers
     {
         private VideoGameStoreDBContext db = new VideoGameStoreDBContext();
 
+        [Authorize(Roles = "Admin, Employee")]
         // GET: Credit_Card
         public ActionResult Index()
         {
             var credit_Card = db.Credit_Card.Include(c => c.User);
             return View(credit_Card.ToList());
         }
+        
+        public ActionResult UserCards()
+        {
+            int user_id = db.Users.Where(u => u.username == this.User.Identity.Name).FirstOrDefault().user_id;
+            var credit_Card = db.Credit_Card.Include(c => c.User).Where(c => c.user_id == user_id);
+            return View(credit_Card.ToList());
+        }
 
+        [Authorize(Roles = "Admin, Employee")]
         // GET: Credit_Card/Details/5
         public ActionResult Details(int? id)
         {
@@ -36,13 +45,14 @@ namespace VideoGameStore.Controllers
             return View(credit_Card);
         }
 
+        [Authorize(Roles = "Admin, Employee")]
         // GET: Credit_Card/Create
         public ActionResult Create()
         {
             ViewBag.user_id = new SelectList(db.Users, "user_id", "username");
             return View();
         }
-
+        
         // GET: Credit_Card/CreateUserCreditCard
         public ActionResult CreateUserCreditCard()
         {
@@ -50,6 +60,7 @@ namespace VideoGameStore.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Admin, Employee")]
         // POST: Credit_Card/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.

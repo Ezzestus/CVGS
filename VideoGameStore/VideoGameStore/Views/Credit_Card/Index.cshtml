@@ -17,15 +17,18 @@
         <th>
             @Html.DisplayNameFor(model => model.expiry_date)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.is_expired)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.is_flagged)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.User.username)
-        </th>
+        @if (User.IsInRole("Admin") || User.IsInRole("Employee"))
+        {
+            <th>
+                @Html.DisplayNameFor(model => model.is_expired)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.is_flagged)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User.username)
+            </th>
+        }        
         <th></th>
     </tr>
 
@@ -37,19 +40,25 @@
         <td>
             @Html.DisplayFor(modelItem => item.expiry_date)
         </td>
+        @if (User.IsInRole("Admin") || User.IsInRole("Employee"))
+        {
+            <td>
+                @Html.DisplayFor(modelItem => item.is_expired)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.is_flagged)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.username)
+            </td>
+        }        
         <td>
-            @Html.DisplayFor(modelItem => item.is_expired)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.is_flagged)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.User.username)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.credit_card_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.credit_card_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.credit_card_id })
+            <p>@Html.ActionLink("Edit", "Edit", new { id=item.credit_card_id })</p>
+            @if (User.IsInRole("Admin") || User.IsInRole("Employee"))
+            {
+                <p>@Html.ActionLink("Details", "Details", new { id = item.credit_card_id })</p>
+            }            
+            <p>@Html.ActionLink("Delete", "Delete", new { id=item.credit_card_id })</p>
         </td>
     </tr>
 }

@@ -4,11 +4,8 @@
     ViewBag.Title = "DisplayUserInvoices";
 }
 
-<h2>DisplayUserInvoices</h2>
+<h2>User Invoices</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -17,6 +14,7 @@
         <th>
             @Html.DisplayNameFor(model => model.ship_date)
         </th>
+
         <th>
             @Html.DisplayNameFor(model => model.is_invoice_closed)
         </th>

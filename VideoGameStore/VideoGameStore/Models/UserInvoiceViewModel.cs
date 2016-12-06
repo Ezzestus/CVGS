@@ -23,13 +23,11 @@ namespace VideoGameStore.Models
 
         public Credit_Card credit_card;
 
-        //public DateTime invoice_date;
-
         public IEnumerable<Line_Item> items;
 
         public decimal CalculateSubtotal(Line_Item line_item)
         {
-            //return items.Sum(i => i.price * i.quantity);
+
             return line_item.price * line_item.quantity;
         }
 
@@ -38,7 +36,6 @@ namespace VideoGameStore.Models
             decimal total = 0;
             foreach (var item in items)
             {
-                //total += items.Sum(i => i.price * i.quantity);
                 total += item.price * item.quantity;
             }            
             return total;

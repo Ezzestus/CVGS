@@ -34,12 +34,15 @@
         <td>
             @Html.DisplayFor(modelItem => item.User.username)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.wish_list_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.wish_list_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.wish_list_id })
-        </td>
+        @if (item.User.username == this.User.Identity.Name)
+        {
+            <td>
+                @Html.ActionLink("Delete", "Delete", new { id = item.wish_list_id })
+            </td>
+        }
+        
     </tr>
 }
 
 </table>
+<p>@Html.ActionLink("Back to Profile", "Index", "Profiles", new { id = ViewBag.return_id }, null)</p>

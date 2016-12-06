@@ -24,3 +24,8 @@ G:\MicrosoftEnterprise\ryan\CVGS\VideoGameStore\RPClassLibrary\bin\Debug\RPClass
 G:\MicrosoftEnterprise\ryan\CVGS\VideoGameStore\RPClassLibrary\obj\Debug\RPClassLibrary.csprojResolveAssemblyReference.cache
 G:\MicrosoftEnterprise\ryan\CVGS\VideoGameStore\RPClassLibrary\obj\Debug\RPClassLibrary.dll
 G:\MicrosoftEnterprise\ryan\CVGS\VideoGameStore\RPClassLibrary\obj\Debug\RPClassLibrary.pdb
+C:\Users\John L\Desktop\PROG3050 - VideoGameStore project\CVGS\VideoGameStore\RPClassLibrary\bin\Debug\RPClassLibrary.dll
+C:\Users\John L\Desktop\PROG3050 - VideoGameStore project\CVGS\VideoGameStore\RPClassLibrary\bin\Debug\RPClassLibrary.pdb
+C:\Users\John L\Desktop\PROG3050 - VideoGameStore project\CVGS\VideoGameStore\RPClassLibrary\obj\Debug\RPClassLibrary.csprojResolveAssemblyReference.cache
+C:\Users\John L\Desktop\PROG3050 - VideoGameStore project\CVGS\VideoGameStore\RPClassLibrary\obj\Debug\RPClassLibrary.dll
+C:\Users\John L\Desktop\PROG3050 - VideoGameStore project\CVGS\VideoGameStore\RPClassLibrary\obj\Debug\RPClassLibrary.pdb

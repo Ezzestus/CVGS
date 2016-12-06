@@ -21,6 +21,8 @@ namespace VideoGameStore.Controllers
             return View(addresses.ToList());
         }
 
+
+
         // GET: Addresses/Details/5
         public ActionResult Details(int? id)
         {

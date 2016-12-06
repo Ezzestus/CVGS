@@ -27,8 +27,8 @@ namespace VideoGameStore.Models
         public bool is_expired { get; set; }
         public bool is_flagged { get; set; }
     
-        public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Invoice> Invoices { get; set; }
+        public virtual User User { get; set; }
     }
 }

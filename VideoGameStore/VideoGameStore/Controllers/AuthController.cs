@@ -14,6 +14,7 @@ using VideoGameStore.Models;
 using System.Security.Claims;
 using System.Web.Helpers;
 using System.Data.Entity.Validation;
+using System.Data.Entity.Infrastructure;
 
 namespace VideoGameStore.Controllers
 {
@@ -113,8 +114,30 @@ namespace VideoGameStore.Controllers
                 user.user_password = hashedPassword;
 
                 VideoGameStoreDBContext db = new VideoGameStoreDBContext();
-                db.Users.Add(user);
-                db.SaveChanges();
+                try
+                {
+                    db.Users.Add(user);
+                    db.SaveChanges();
+                }
+                catch (DbEntityValidationException ex)
+                {
+                    foreach (DbEntityValidationResult item in ex.EntityValidationErrors)
+                    {
+                        // Get entry
+
+                        DbEntityEntry entry = item.Entry;
+                        string entityTypeName = entry.Entity.GetType().Name;
+
+                        // Display or log error messages
+
+                        foreach (DbValidationError subItem in item.ValidationErrors)
+                        {
+                            string message = string.Format("Error '{0}' occurred in {1} at {2}",
+                                     subItem.ErrorMessage, entityTypeName, subItem.PropertyName);
+                            Console.WriteLine(message);
+                        }
+                    }
+                }
                 return RedirectToAction("Index", "Home");
             }
             else

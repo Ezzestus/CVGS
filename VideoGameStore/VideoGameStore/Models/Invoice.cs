@@ -31,8 +31,8 @@ namespace VideoGameStore.Models
         public virtual Credit_Card Credit_Card { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Invoice_Address> Invoice_Address { get; set; }
-        public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Line_Item> Line_Item { get; set; }
+        public virtual User User { get; set; }
     }
 }

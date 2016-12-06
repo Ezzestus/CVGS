@@ -27,7 +27,6 @@ namespace VideoGameStore.Models
 
         public decimal CalculateSubtotal(Line_Item line_item)
         {
-
             return line_item.price * line_item.quantity;
         }
 

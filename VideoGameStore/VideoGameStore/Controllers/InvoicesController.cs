@@ -43,7 +43,7 @@ namespace VideoGameStore.Controllers
                 int user_id = db.Users.Where(u => u.username == this.User.Identity.Name).FirstOrDefault().user_id;
                 if (invoice.user_id != user_id)
                 {
-                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);     //change to something else? this is if the user trying to access this isn't the user who created the order
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);     
                 }
                 else
                 {
@@ -74,6 +74,7 @@ namespace VideoGameStore.Controllers
             return View(invoice);
         }
 
+        [Authorize(Roles = "Admin, Employee")]
         // GET: Invoices/Create
         public ActionResult Create()
         {
@@ -82,6 +83,7 @@ namespace VideoGameStore.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Admin, Employee")]
         // POST: Invoices/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -101,6 +103,7 @@ namespace VideoGameStore.Controllers
             return View(invoice);
         }
 
+        [Authorize(Roles = "Admin, Employee")]
         // GET: Invoices/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -118,6 +121,7 @@ namespace VideoGameStore.Controllers
             return View(invoice);
         }
 
+        [Authorize(Roles = "Admin, Employee")]
         // POST: Invoices/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -136,6 +140,7 @@ namespace VideoGameStore.Controllers
             return View(invoice);
         }
 
+        [Authorize(Roles = "Admin, Employee")]
         // GET: Invoices/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -151,6 +156,7 @@ namespace VideoGameStore.Controllers
             return View(invoice);
         }
 
+        [Authorize(Roles = "Admin, Employee")]
         // POST: Invoices/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

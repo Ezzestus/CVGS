@@ -75,8 +75,8 @@ namespace VideoGameStore.Controllers
             }
             else
             {
-                //try
-                //{
+                try
+                {
                     // create invoice + populate with data from select list in view
                     Invoice invoice = new Invoice();
                     invoice.user_id = user_id;
@@ -113,32 +113,32 @@ namespace VideoGameStore.Controllers
                     }
                 // clear out cart data
                 Session["Cart"] = new Cart();
-
-
-                //}
-                //catch (DbEntityValidationException ex)
-                //{
-                //    foreach (DbEntityValidationResult item in ex.EntityValidationErrors)
-                //    {
-                //        // Get entry
-
-                //        DbEntityEntry entry = item.Entry;
-                //        string entityTypeName = entry.Entity.GetType().Name;
-
-                //        // Display or log error messages
-
-                //        foreach (DbValidationError subItem in item.ValidationErrors)
-                //        {
-                //            string message = string.Format("Error '{0}' occurred in {1} at {2}",
-                //                     subItem.ErrorMessage, entityTypeName, subItem.PropertyName);
-                //            Console.WriteLine(message);
-                //        }
-                //    }
-                //}
-
-                //return View();
-                //return RedirectToAction("DisplayUserInvoice", "Invoices", invoiceNumber);        // this doesn't work right - want to send it to a view in invoice
                 return RedirectToAction("DisplayUserInvoice", "Invoices", new { invoice_id = invoiceNumber });
+
+
+                }
+                catch (DbEntityValidationException ex)
+                {
+                    foreach (DbEntityValidationResult item in ex.EntityValidationErrors)
+                    {
+                        // Get entry
+
+                        DbEntityEntry entry = item.Entry;
+                        string entityTypeName = entry.Entity.GetType().Name;
+
+                        // Display or log error messages
+
+                        foreach (DbValidationError subItem in item.ValidationErrors)
+                        {
+                            string message = string.Format("Error '{0}' occurred in {1} at {2}",
+                                     subItem.ErrorMessage, entityTypeName, subItem.PropertyName);
+                            Console.WriteLine(message);
+                        }
+                    }
+                }
+
+                return View();
+                //return RedirectToAction("DisplayUserInvoice", "Invoices", invoiceNumber);        // this doesn't work right - want to send it to a view in invoice
             }
         }
 

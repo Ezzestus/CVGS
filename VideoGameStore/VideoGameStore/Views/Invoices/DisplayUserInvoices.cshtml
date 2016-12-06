@@ -9,45 +9,36 @@
 <table class="table">
     <tr>
         <th>
+            Invoice Number
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.invoice_date)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ship_date)
-        </th>
-
-        <th>
-            @Html.DisplayNameFor(model => model.is_invoice_closed)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Credit_Card.credit_card_id)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.User.username)
-        </th>
+        </th>     
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.invoice_id)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.invoice_date)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ship_date)
-        </td>
+        </td>        
         <td>
-            @Html.DisplayFor(modelItem => item.is_invoice_closed)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Credit_Card.credit_card_id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.User.username)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.invoice_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.invoice_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.invoice_id })
+            <p>@Html.ActionLink("Display Invoice", "DisplayUserInvoice", new { id = item.invoice_id })</p>  
+            @if (User.IsInRole("Admin") || User.IsInRole("Employee"))
+            {
+                <p>@Html.ActionLink("Details", "Details", new { id = item.invoice_id })</p>
+                <p>@Html.ActionLink("Edit", "Edit", new { id = item.invoice_id })</p>
+                <p>@Html.ActionLink("Delete", "Delete", new { id = item.invoice_id })</p>
+            }                                  
         </td>
     </tr>
 }

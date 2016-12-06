@@ -30,7 +30,10 @@
                     <li>@Html.ActionLink("Members", "Members", "Users")</li>*@
                     <li>@Html.ActionLink("Games", "Index", "Games")</li>
                     <li>@Html.ActionLink("Events", "Index", "Events")</li>
-                    <li>@Html.ActionLink("Reports", "Index", "Reports")</li>
+                    @if (User.IsInRole("Admin") || User.IsInRole("Employee"))
+                    {
+                        <li>@Html.ActionLink("Reports", "Index", "Reports")</li>
+                    }                    
                     <li>@Html.ActionLink("Profiles", "Index", "Profiles")</li> 
                     @if(User.Identity.IsAuthenticated)
                     {
@@ -57,9 +60,7 @@
                                 <a href="@Url.Action("Register", "Auth")">Register</a>
                             </li>
                         }                                   
-                </ul>                
-                
-                @*@Html.Partial("_LoginPartial")*@
+                </ul>                                
             </div>                             
         </div>
     </div>

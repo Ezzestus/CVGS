@@ -1,7 +1,7 @@
 ﻿@model VideoGameStore.Models.Credit_Card
 
 @{
-    ViewBag.Title = "CreateUserCreditCard";
+    ViewBag.Title = "Create User Credit Card";
 }
 
 <h2>Add New Credit Card</h2>
@@ -39,6 +39,9 @@
     </div>
 }
 
+<div>
+    @Html.ActionLink("Back to Credit Cards", "UserCards", "Cart", null, null)
+</div>
 <div>
     @Html.ActionLink("Back to Cart", "Checkout", "Cart", null, null)
 </div>

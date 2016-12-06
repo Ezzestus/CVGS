@@ -31,15 +31,15 @@ namespace VideoGameStore.Controllers
         }
 
         [Authorize(Roles = "Customer, Admin, Employee, Member")]
-        public ActionResult DisplayUserInvoice(int? invoice_id)
+        public ActionResult DisplayUserInvoice(int? id)
         {
-            if (invoice_id == null)
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             else
             {
-                Invoice invoice = db.Invoices.Where(i => i.invoice_id == invoice_id).FirstOrDefault();
+                Invoice invoice = db.Invoices.Where(i => i.invoice_id == id).FirstOrDefault();
                 int user_id = db.Users.Where(u => u.username == this.User.Identity.Name).FirstOrDefault().user_id;
                 if (invoice.user_id != user_id)
                 {
@@ -51,9 +51,7 @@ namespace VideoGameStore.Controllers
                     int address_id = db.Invoice_Address.Where(a => a.invoice_id == invoice.invoice_id).FirstOrDefault().address_id;
                     Address address = db.Addresses.Where(a => a.address_id == address_id).FirstOrDefault();
                     Credit_Card credit_card = db.Credit_Card.Where(c => c.credit_card_id == invoice.credit_card_id).FirstOrDefault();
-                    IEnumerable<Line_Item> items = db.Line_Item.Where(l => l.invoice_id == invoice_id).Include(l => l.Game).ToList();
-                    //ViewBag.items = items;
-                    //return View(invoice);
+                    IEnumerable<Line_Item> items = db.Line_Item.Where(l => l.invoice_id == id).Include(l => l.Game).ToList();
                     return View(new UserInvoiceViewModel { invoice = invoice, user = user, address = address, credit_card = credit_card, items = items });
                 }
             }                       

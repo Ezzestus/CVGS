@@ -4,11 +4,10 @@
     ViewBag.Title = "UserCards";
 }
 
-<h2>UserCards</h2>
+<h2>User Credit Cards</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<p>@Html.ActionLink("Add A New Credit Card", "CreateUserCreditCard", "Credit_Card", null, new { @class = "btn btn-success" })</p>
+
 <table class="table">
     <tr>
         <th>

@@ -476,6 +476,7 @@
     <Content Include="Views\Invoices\DisplayUserInvoice.cshtml" />
     <Content Include="Views\Addresses\CreateUserAddress.cshtml" />
     <Content Include="Views\Invoices\DisplayUserInvoices.cshtml" />
+    <Content Include="Views\Credit_Card\CreateUserCreditCard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -14,6 +14,7 @@ namespace VideoGameStore.Controllers
     {
         private VideoGameStoreDBContext db = new VideoGameStoreDBContext();
 
+        [Authorize(Roles = "Admin, Employee")]
         // GET: Addresses
         public ActionResult Index()
         {
@@ -21,8 +22,7 @@ namespace VideoGameStore.Controllers
             return View(addresses.ToList());
         }
 
-
-
+        [Authorize(Roles = "Admin, Employee")]
         // GET: Addresses/Details/5
         public ActionResult Details(int? id)
         {
@@ -38,6 +38,7 @@ namespace VideoGameStore.Controllers
             return View(address);
         }
 
+        [Authorize(Roles = "Admin, Employee")]
         // GET: Addresses/Create
         public ActionResult Create()
         {
@@ -45,6 +46,7 @@ namespace VideoGameStore.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Admin, Employee")]
         // POST: Addresses/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -63,15 +65,15 @@ namespace VideoGameStore.Controllers
             return View(address);
         }
 
+        [Authorize(Roles = "Admin, Employee, Member, Customer")]
         // GET: Addresses/CreateUserAddress
         public ActionResult CreateUserAddress()
         {
-            //ViewBag.user_id = db.Users.Where(u => u.username == this.User.Identity.Name).FirstOrDefault().user_id;
             ViewBag.province_id = new SelectList(db.Provinces, "province_id", "province_code");
             return View();
         }
 
-        [Authorize(Roles ="Customer, Admin, Employee")]
+        [Authorize(Roles = "Admin, Employee, Member, Customer")]
         // POST: Addresses/CreateUserAddress
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.

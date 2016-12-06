@@ -14,10 +14,19 @@ namespace VideoGameStore.Controllers
     {
         private VideoGameStoreDBContext db = new VideoGameStoreDBContext();
 
+        [Authorize(Roles = "Admin, Employee")]
         // GET: Invoices
         public ActionResult Index()
         {
             var invoices = db.Invoices.Include(i => i.Credit_Card).Include(i => i.User);
+            return View(invoices.ToList());
+        }
+
+        [Authorize(Roles = "Customer, Admin, Employee, Member")]
+        public ActionResult DisplayUserInvoices()
+        {
+            int user_id = db.Users.Where(u => u.username == this.User.Identity.Name).FirstOrDefault().user_id;
+            var invoices = db.Invoices.Include(i => i.Credit_Card).Include(i => i.User).Where(i => i.user_id == user_id);
             return View(invoices.ToList());
         }
 

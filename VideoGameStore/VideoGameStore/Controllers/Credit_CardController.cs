@@ -21,7 +21,8 @@ namespace VideoGameStore.Controllers
             var credit_Card = db.Credit_Card.Include(c => c.User);
             return View(credit_Card.ToList());
         }
-        
+
+        [Authorize(Roles = "Admin, Employee, Customer, Member")]
         public ActionResult UserCards()
         {
             int user_id = db.Users.Where(u => u.username == this.User.Identity.Name).FirstOrDefault().user_id;

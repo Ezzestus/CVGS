@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*Wish_ListController.cs
+ * Author: Ryan Pease, John Lambert
+ * 
+ * Controls all logic and views for the wish list pages
+ * 
+ */
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;

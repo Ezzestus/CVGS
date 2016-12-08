@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*Friend_ListController.cs
+ * Author: Ryan Pease, John Lambert
+ * 
+ * Controls the logic and views for the friend list pages.
+ */
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
